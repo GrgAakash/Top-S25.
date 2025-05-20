@@ -1,0 +1,143 @@
+\documentclass[letter]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb,amsrefs,mathtools,amsthm}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usetikzlibrary{snakes,patterns}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+\usepackage{caption}
+\usepackage{cancel}
+%\usepackage[T1]{fontenc}
+
+\usepackage[bookmarksnumbered, colorlinks, plainpages]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=red, anchorcolor=green, citecolor=cyan, urlcolor=blue, filecolor=magenta, pdftoolbar=true}
+\usepackage[capitalise]{cleveref}
+
+\newtheorem*{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+
+
+\newcommand{\ch}[1]{\marginpar{
+	\begin{flushleft}{\color{red}\tiny #1}\end{flushleft}}}
+\newcommand{\ak}[1]{\marginpar{
+\begin{flushleft}{\color{blue}\tiny #1}\end{flushleft}}}
+%\newcommand{\kc}[1]{{\color[rgb]{1,0,0}#1}}
+%\newcommand{\blue}[1]{{\color[rgb]{0,0,1}#1}}
+
+\DeclareMathOperator{\atan2}{atan2}
+\title[\ \ Draft of \today]{Topology, Summer 2025}
+
+\author[Anon \ \ Draft of \today]{\textbf{Anon}}
+
+
+%red, green, blue, cyan, magenta, yellow, black, gray, white, darkgray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet.
+
+\date{Draft of \today}
+%00A05 Mathematics in general
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{\textbf{Introduction}}
+Problems primarily from \cite{lee2011manifolds}.\\
+
+\section{\textbf{Topological Spaces}}
+\subsection{Topologies}
+\begin{problem}
+    Suppose $M$ is a set and $d,d'$ are two different metrics on $M$. Prove that $d,d'$ generate the same topology on $M$ iff $\forall x\in M,\forall r>0,\exists r_1,r_2>0:B_{r_1}^{d'}(x)\subseteq B_{r}^{d}(x)~\text{and}~ B_{r_2}^{d}(x)\subseteq B_{r}^{d'}(x)$
+\end{problem}
+\begin{proof}
+$\implies$
+$d,d'$ generate the same topology so, $B_{r}^{d}(x)$ is open in $d'$ topology.\\
+Thus by definition of openness, $\forall x\in B_{r}^{d}(x),\exists r_1 >0:B_{r_1}^{d'}(x) \subseteq B_{r}^{d}(x)$ \\
+Similar reasoning yields, $B_{r_2}^{d}(x)\subseteq B_{r}^{d'}(x) $\\
+
+\ch{Strategy: Show open set in $d$ topology is open in $d'$ topology and vice versa to prove that they generate the same topology.Please feel free to add new insights~~:)}
+
+$\impliedby$\\
+
+Let $U$ be an open set in $d$ topology.So, $B_{r}^{d}(x) \subseteq U$ and we also have $\forall r>0, \exists r_1>0:B_{r_1}^{d'}(x)\subseteq B_{r}^{d}(x)\implies B_{r_1}^{d'}(x)\subseteq U $
+.Thus, $U$ is open set in $d'$ topology.
+Similar reasoning yields $V$ is open set in $d$ topology given that $V $ is open set in $d'$ topology.
+\end{proof}
+
+\begin{problem}
+    Let $(M,d)$ be a metric space, let $c$ be a positive real number, and define a new metric $d'$ on $M$ by $d'(x,y)=c \cdot d(x,y)$. Prove that $d$ and $d'$ generate the same topology on $M.$
+\end{problem}
+\begin{proof}
+    Let $U$ be an open subset in $d$ topology.\\
+    Now,~$B_{r}^{d}(x) \subseteq U,B_{r}^{d}(x)=\{y\in M| d(x,y)<r \}$\\
+    Define $r_1=r \cdot c, c>0$ 
+ \ch{Strategy: Same as above. We leverage the relation between the metrics.}   
+    $$B_{r_1}^{d'}(x)=\{y\in M| d'(x,y)<r_1\}=\{y\in M| c \cdot d(x,y)<\ r_1\}=\{y\in M| d(x,y)<\ \frac{r_1}{c}=r\}=B_{r}^{d}(x)$$ Thus, $B_{r_1}^{d'}(x)\subseteq U$, so $U$ is open in $d'$ topology.\\
+    
+    With similar reasoning, for an open subset $V$ in $d'$ topology, $V$ is open in $d$ topology.Therefore, $d,d'$ generate the same topology on $M.$
+\end{proof}
+
+\begin{problem}
+Define a metric $d'$ on $\mathbb{R}^n$ by $d'(x,y)=\max\{|x_1-y_1,\ldots,|x_n-y_n|\}.$ Show that the Euclidean metric and $d'$ generate the same topology on $\mathbb{R}^n$.
+\end{problem}
+
+\subsection{Convergence and Continuity}
+
+\subsection{Hausdorff Spaces}
+
+\subsection{Bases and Countability}
+
+\subsection{Manifolds}
+
+\subsection{Problems}
+
+
+\section{\textbf{New Spaces From Old}}
+
+\subsection{Subspaces}
+
+\subsection{Product Spaces}
+
+\subsection{Disjoint Union Spaces}
+
+\subsection{Quotient Spaces}
+
+\subsection{Adjunction Spaces}
+
+\subsection{Topological Groups and Group Actions}
+
+\subsection{Problems}
+
+
+
+\begin{bibdiv}
+\begin{biblist}
+\bib{lee2011manifolds}{book}{
+  author={Lee, John M.},
+  title={Introduction to Topological Manifolds},
+  edition={2},
+  series={Graduate Texts in Mathematics},
+  number={202},
+  publisher={Springer},
+  address={New York, NY},
+  date={2011},
+  isbn={978-1-4419-7939-1},
+  isbn={978-1-4614-2790-2},
+  isbn={978-1-4419-7940-7},
+  doi={10.1007/978-1-4419-7940-7},
+  note={Originally published: 28 December 2010},
+}
+
+\end{biblist}
+\end{bibdiv}
+\vfill
+
+\end{document}
